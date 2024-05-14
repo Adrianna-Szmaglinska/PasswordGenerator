@@ -9,7 +9,8 @@ public class PasswordGenerator {
 
     public static void main(String[] args) {
         int length = 12; 
-        String generatedPassword = generatePassword(length);
+        String generatedPassword = generatedPassword(length);
+        int rating = getPasswordRating(generatedPassword);
         System.out.println("Generated password: " + generatedPassword);
     }
 
@@ -44,5 +45,22 @@ public class PasswordGenerator {
             characters[randomIndex] = temp;
         }
         return new String(characters);
+    }
+
+    private static int getPasswordRating(String password) {
+        int rating = 0;
+        if (password.matches(".*[A-Z].*")) {
+            rating += 2;
+        }
+        if (password.matches(".*[a-z].*")) {
+            rating += 2;
+        }
+        if (password.matches(",*[!@#$%^&*()-_=+].*")) {
+            rating += 2;
+        }
+        if (password.length() >=12) {
+            rating += 2;
+        }
+        return rating;
     }
 }
