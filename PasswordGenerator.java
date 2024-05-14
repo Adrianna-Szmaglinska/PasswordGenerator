@@ -9,9 +9,10 @@ public class PasswordGenerator {
 
     public static void main(String[] args) {
         int length = 12; 
-        String generatedPassword = generatedPassword(length);
+        String generatedPassword = generatePassword(length);
         int rating = getPasswordRating(generatedPassword);
         System.out.println("Generated password: " + generatedPassword);
+        System.out.println("Password Rating: " + rating + "/10");
     }
 
     public static String generatePassword(int length) {
